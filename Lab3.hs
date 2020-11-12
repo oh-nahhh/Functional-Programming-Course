@@ -1,5 +1,5 @@
 {-
-  Functional Programming 1 
+  Functional Programming 1
   Assignment 3
   Niklas Bergqvist
  -}
@@ -9,11 +9,11 @@ module Lab3(Fruit(Apple,Banana,Lemon),sumPrice,BSTree(Void,BSNode),subTree,Tree(
 import Prelude hiding ((++),elem,last,reverse,filter)
 
 {- 1.1 -}
--- remember to provide the datatype representation
+--
 data Fruit = Apple Double | Banana Double | Lemon Int
 
 {- 1.2 -}
--- remember to provide a function specification
+-- ..
 sumPrice :: [Fruit] -> Double -> Double -> Double -> Double
 sumPrice [] _ _ _ = 0
 sumPrice ((Apple a) : xs) apple_price banana_price lemon_price = a*apple_price + sumPrice xs apple_price banana_price lemon_price
@@ -45,7 +45,7 @@ EXAMPLES: sumPrice [] 1.0 1.0 1.0 = 0.0
 
 data BSTree = Void | BSNode BSTree Integer BSTree -- do not modify this line
 
--- remember to provide a function specification
+-- ..
 subTree :: Integer -> Integer -> BSTree -> BSTree
 subTree _ _ Void = Void
 subTree a b (BSNode left label right)
@@ -66,11 +66,11 @@ EXAMPLES: t = BSNode ( BSNode ( BSNode Void 0 ( BSNode Void 2 Void ) ) 3 ( BSNod
 -}
 
 {- 3.1 -}
--- remember to provide the datatype representation
+-- ..
 data Tree a = Node a [Tree a] deriving (Show)
 
 {- 3.2 a) -}
--- remember to provide a function specification
+-- ..
 count :: Tree a -> Integer
 count (Node a []) = 1
 count (Node a b) = (sum . map count $ b) + 1
@@ -87,7 +87,7 @@ EXAMPLES: count (Node 1[]) == 1
 -}
 
 {- 3.2 b) -}
--- remember to provide a function specification
+-- ..
 labels:: Tree a -> [a]
 labels (Node a []) = [a]
 labels (Node a b) = [a] ++ (concat . map labels $ b)
@@ -104,7 +104,7 @@ EXAMPLES: labels (Node 1 []) == [1]
 -}
 
 {- 3.2 c) -}
--- remember to provide a function specification
+-- ..
 height:: Tree a -> Integer
 height (Node a []) = 1
 height (Node a b) = (maximum . map height $ b) + 1
@@ -120,7 +120,7 @@ EXAMPLES: height (Node "hej"[]) == 1
 -}
 
 {- 4.1 -}
--- remember to provide a function specification
+-- ..
 (++)::[a] -> [a] -> [a]
 (++) x y = foldr (:) y x
 {-
@@ -134,7 +134,7 @@ EXAMPLES: [] ++ [1,2] ==  [1,2]
 -}
 
 {- 4.2 -}
--- remember to provide a function specification
+-- ..
 elem :: Eq a => a -> [a] -> Bool
 elem x list = foldl (\a b -> a || (x == b)) False list
 
@@ -149,7 +149,7 @@ EXAMPLES: elem 'a' ['b']" == False
 -}
 
 {- 4.3 -}
--- remember to provide a function specification
+-- ..
 last :: [a] -> a
 last list = foldl1 (\x y-> y)list
 {-
@@ -163,7 +163,7 @@ EXAMPLES: last ['a','b','c'] == 'c'
 -}
 
 {- 4.4 -}
--- remember to provide a function specification
+-- ..
 reverse:: [a] -> [a]
 reverse x = foldl (\a y -> y : a) [] x
 {-
@@ -176,7 +176,7 @@ EXAMPLES: reverse [1,2,3,4,5] == [5,4,3,2,1]
 -}
 
 {- 4.5 -}
--- remember to provide a function specification
+-- ..
 filter ::(a -> Bool) -> [a] -> [a]
 --filter p [] = []
 filter p xs = foldr (\x xs -> if p x then x:xs else xs ) [] xs
